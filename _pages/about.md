@@ -15,7 +15,7 @@ selected_papers: true # 대표 논문 표시 (true/false)
 social: true # 하단 이메일/구글스칼라 아이콘 표시
 
 announcements:
-  enabled: true # 최신 소식(News) 표시 여부 (안 쓰려면 false)
+  enabled: true
   scrollable: true
   limit: 5
 
