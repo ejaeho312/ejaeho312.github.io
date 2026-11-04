@@ -158,16 +158,17 @@ footer{margin-top:72px;font-size:13px;color:var(--muted)}
   <div class="two">
     <div>
       <h3>Machine Learning</h3>
-      <p class="grp">Math-based &amp; Reliable AI</p>
+      <p class="grp">Mathematical Foundations of Reliable AI</p>
       <ul class="bul">
-        <li>Mathematics-based analysis of AI</li>
-        <li>Quantum and AI</li>
+        <li>PDE theory of learning dynamics and collapse</li>
+        <li>Certified inference with provable guarantees</li>
+        <li>Quantum-tunneling noise models for reliable AI hardware</li>
       </ul>
-      <p class="grp">Generative AI and Optimization</p>
+      <p class="grp">Generative &amp; Scientific AI</p>
       <ul class="bul">
-        <li>Biomedical Data Science</li>
-        <li>Foundation Models</li>
-        <li>Error-correcting codes</li>
+        <li>Diffusion-based decoding of error-correcting codes</li>
+        <li>Single-cell multi-omics and biomedical foundation models</li>
+        <li>Physics-informed neural networks for PDEs</li>
       </ul>
       <p class="grp">Adaptive &amp; Multimodal AI</p>
       <ul class="bul">
@@ -180,14 +181,15 @@ footer{margin-top:72px;font-size:13px;color:var(--muted)}
     <div>
       <h3>Partial Differential Equations</h3>
       <ul class="bul">
-        <li>Blow-up for parabolic PDEs</li>
-        <li>Global existence for parabolic PDEs</li>
-        <li>Blow-up for Schrödinger equations</li>
+        <li>Blow-up and global existence for nonlinear parabolic equations and systems</li>
+        <li>Nonlinear parabolic equations on graphs and networks</li>
+        <li>Blow-up for nonlinear Schrödinger equations</li>
       </ul>
     </div>
   </div>
+  </div>
 
-  <h2 class="label" style="margin-bottom:0">SELECTED PUBLICATIONS</h2>
+  <h2 class="label" style="margin-bottom:0">REPRESENTATIVE WORK</h2>
   <ul class="list sel" id="selected"></ul>
   <a class="btn" href="#publications">All publications →</a>
 </section>
@@ -284,16 +286,16 @@ footer{margin-top:72px;font-size:13px;color:var(--muted)}
 // ---------- Content (edit here) ----------
 var C = 'S.-Y. Chung, J. Hwang';
 var PUBS = [
-  { year: 2026, tag: 'AI', sel: true, title: 'When Does Exploration Prevent Collapse? Three Regimes and the Path of the Reward in Self-Consistency Training', authors: 'J. Hwang, U. Hwang', venue: 'arXiv preprint arXiv:2611.01307', url: 'https://arxiv.org/abs/2611.01307' },
-  { year: 2026, tag: 'AI', sel: true, title: 'The Batch Size Can Be One: Test-Time Adaptation from Classifier Geometry', authors: 'J. Hwang, J. Lee, Y. Oh, S. Yoon, J. Shin, U. Hwang', venue: 'arXiv preprint arXiv:2610.36628', url: 'https://arxiv.org/abs/2610.36628' },
-  { year: 2026, tag: 'AI', sel: true, title: 'Certified Adaptive List Decoding for Error-Correcting Codes', authors: 'J. Hwang, B.-S. Won, U. Hwang', venue: 'arXiv preprint arXiv:2610.27805', url: 'https://arxiv.org/abs/2610.27805' },
-  { year: 2026, tag: 'AI', sel: true, title: 'Quantum Tunneling-Aware Machine Learning: Physics-Derived Noise Models for Robust Deployment', authors: 'U. Hwang, J. Hwang', venue: 'arXiv preprint arXiv:2606.00741', url: 'https://arxiv.org/abs/2606.00741' },
-  { year: 2026, tag: 'PDE', sel: true, title: 'A dichotomy for the global existence of solutions to reaction-diffusion equations and systems with time-dependent sources on bounded domains', authors: C, venue: 'Journal of Mathematical Analysis and Applications', url: 'https://doi.org/10.1016/j.jmaa.2025.129905' },
+  { year: 2026, tag: 'AI', title: 'When Does Exploration Prevent Collapse? Three Regimes and the Path of the Reward in Self-Consistency Training', authors: 'J. Hwang, U. Hwang', venue: 'arXiv preprint arXiv:2611.01307', url: 'https://arxiv.org/abs/2611.01307' },
+  { year: 2026, tag: 'AI', title: 'The Batch Size Can Be One: Test-Time Adaptation from Classifier Geometry', authors: 'J. Hwang, J. Lee, Y. Oh, S. Yoon, J. Shin, U. Hwang', venue: 'arXiv preprint arXiv:2610.36628', url: 'https://arxiv.org/abs/2610.36628' },
+  { year: 2026, tag: 'AI', title: 'Certified Adaptive List Decoding for Error-Correcting Codes', authors: 'J. Hwang, B.-S. Won, U. Hwang', venue: 'arXiv preprint arXiv:2610.27805', url: 'https://arxiv.org/abs/2610.27805' },
+  { year: 2026, tag: 'AI', title: 'Quantum Tunneling-Aware Machine Learning: Physics-Derived Noise Models for Robust Deployment', authors: 'U. Hwang, J. Hwang', venue: 'arXiv preprint arXiv:2606.00741', url: 'https://arxiv.org/abs/2606.00741' },
+  { year: 2026, tag: 'PDE', title: 'A dichotomy for the global existence of solutions to reaction-diffusion equations and systems with time-dependent sources on bounded domains', authors: C, venue: 'Journal of Mathematical Analysis and Applications', url: 'https://doi.org/10.1016/j.jmaa.2025.129905' },
   { year: 2026, tag: 'PDE', title: 'Blow-up phenomena for solutions to reaction-diffusion systems on networks', authors: C, venue: 'Differential and Integral Equations' },
   { year: 2025, tag: 'PDE', title: 'Criteria for blow-up phenomena for solutions to nonlinear reaction–diffusion equations on cones', authors: C, venue: 'Mathematical Methods in the Applied Sciences' },
   { year: 2024, tag: 'PDE', title: 'A necessary and sufficient condition for the global existence of solutions to nonlinear reaction-diffusion equations on the half-spaces in ℝ<sup>N</sup>', authors: C, venue: 'Mathematical Methods in the Applied Sciences' },
   { year: 2024, tag: 'PDE', title: 'A necessary and sufficient condition for the existence of global solutions to reaction-diffusion equations on bounded domains', authors: C, venue: 'Boundary Value Problems' },
-  { year: 2024, tag: 'PDE', title: 'A necessary and sufficient condition for the global existence of solutions to fractional reaction-diffusion equations on ℝ<sup>N</sup>', authors: C, venue: 'Fractional Calculus and Applied Analysis' },
+  { year: 2024, tag: 'PDE', sel: true, title: 'A necessary and sufficient condition for the global existence of solutions to fractional reaction-diffusion equations on ℝ<sup>N</sup>', authors: C, venue: 'Fractional Calculus and Applied Analysis', url: 'https://doi.org/10.1007/s13540-024-00310-3' },
   { year: 2022, tag: 'PDE', title: 'Blow-up conditions of nonlinear parabolic equations and systems under mixed nonlinear boundary conditions', authors: C, venue: 'Boundary Value Problems' },
   { year: 2022, tag: 'PDE', title: 'A necessary and sufficient condition for the existence of global solutions to discrete semilinear parabolic equations on networks', authors: C, venue: 'Chaos, Solitons &amp; Fractals' },
   { year: 2021, tag: 'PDE', title: 'A complete characterization of Fujita’s blow-up solutions for discrete p-Laplacian parabolic equations under the mixed boundary conditions on networks', authors: C, venue: 'Journal of Mathematical Analysis and Applications' },
@@ -324,11 +326,8 @@ var TALKS = [
 ];
 
 var NEWS = [
-  { date: 'Nov 2026', text: 'New preprint on arXiv: <a href="https://arxiv.org/abs/2611.01307">When Does Exploration Prevent Collapse? Three Regimes and the Path of the Reward in Self-Consistency Training</a>.' },
-  { date: 'Oct 2026', text: 'New preprints on arXiv: <a href="https://arxiv.org/abs/2610.36628">The Batch Size Can Be One: Test-Time Adaptation from Classifier Geometry</a> and <a href="https://arxiv.org/abs/2610.27805">Certified Adaptive List Decoding for Error-Correcting Codes</a>.' },
-  { date: 'Jun 2026', text: 'New preprint on arXiv: <a href="https://arxiv.org/abs/2606.00741">Quantum Tunneling-Aware Machine Learning</a>.' },
-  { date: 'May 2026', text: 'Paper published in <em>Differential and Integral Equations</em> (May/June 2026 issue): Blow-up phenomena for solutions to reaction-diffusion systems on networks.' },
-  { date: 'Feb 2026', text: 'Paper published in <em>Journal of Mathematical Analysis and Applications</em>: <a href="https://doi.org/10.1016/j.jmaa.2025.129905">A dichotomy for the global existence of solutions to reaction-diffusion equations and systems with time-dependent sources</a>.' }
+  { date: 'May 2026', text: 'Paper published in <em>Differential and Integral Equations</em>: Blow-up phenomena for solutions to reaction-diffusion systems on networks.' },
+  { date: 'Feb 2026', text: 'Paper published in <em>Journal of Mathematical Analysis and Applications</em>: A dichotomy for the global existence of solutions to reaction-diffusion equations and systems with time-dependent sources on bounded domains.' }
 ];
 
 // ---------- Rendering ----------
