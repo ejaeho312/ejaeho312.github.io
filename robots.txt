@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://ejaeho312.github.io/sitemap.xml
+Sitemap: https://ejaeho.com/sitemap.xml
