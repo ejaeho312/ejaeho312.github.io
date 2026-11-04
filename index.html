@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jaeho Hwang</title>
+<meta name="description" content="Jaeho Hwang. Postdoctoral researcher at the Human-Centered AI Research Institute and lecturer in the Department of Mathematics, Ewha Womans University. Machine learning and nonlinear PDEs.">
+<link rel="icon" href="assets/profile.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --side:#16202a; --side-2:#22313f; --side-text:#e6edf3; --side-muted:#b8c4d0;
+  --ink:#18212b; --ink-2:#2a3540; --muted:#5b6875; --line:#e8edf1;
+  --accent:#0f766e; --accent-dark:#115e59; --accent-soft:#b7dcd8; --mint:#5eead4; --tint:#f3f6f8;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{font-family:'IBM Plex Sans',system-ui,-apple-system,sans-serif;color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}
+a:hover{color:var(--accent-dark);text-decoration:underline}
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace}
+
+.layout{display:flex;min-height:100vh}
+aside{flex:0 0 320px;background:var(--side);color:var(--side-text);padding:56px 40px;display:flex;flex-direction:column;gap:28px;position:sticky;top:0;height:100vh;overflow-y:auto}
+.avatar{width:136px;height:136px;border-radius:50%;object-fit:cover;border:2px solid #2b3846}
+.name{margin:0 0 14px;font-size:30px;font-weight:600;line-height:1.15}
+.aff{margin:0 0 10px;font-size:14px;line-height:1.55;color:var(--side-muted)}
+.aff b{color:var(--side-text);font-weight:500}
+nav{display:flex;flex-direction:column;gap:2px}
+nav a{display:flex;align-items:center;gap:12px;min-height:44px;padding:10px 14px;border-radius:8px;color:#c9d4de;font-size:15px}
+nav a::before{content:"";width:6px;height:6px;border-radius:3px;background:transparent;flex:0 0 6px}
+nav a:hover{background:#1d2a36;color:#fff;text-decoration:none}
+nav a[aria-current="page"]{background:var(--side-2);color:#fff;font-weight:600}
+nav a[aria-current="page"]::before{background:var(--mint)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto}
+.chips a{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--mint);border:1px solid #2f5f5a;padding:8px 12px;border-radius:6px}
+.chips a:hover{background:#1d2a36;text-decoration:none}
+
+main{flex:1 1 auto;min-width:0;padding:64px 64px 96px}
+.wrap{max-width:800px}
+section[data-page]{display:none}
+section[data-page].active{display:block}
+h1{margin:0;font-size:36px;font-weight:600;line-height:1.15}
+.label{margin:48px 0 12px;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:500;letter-spacing:.08em;color:var(--accent)}
+.sub{margin:0 0 2px;font-size:17px;color:#3d4a57}
+.bio{margin:0;font-size:17px;line-height:1.75;color:var(--ink-2)}
+
+.hero{display:flex;flex-wrap:wrap;gap:36px;align-items:flex-start}
+.hero-text{flex:1 1 380px;min-width:0}
+.hero-photo{flex:0 1 220px;width:220px;height:293px;object-fit:cover;border-radius:10px;border:1px solid #dfe5eb}
+
+.news{list-style:none;margin:0;padding:4px 24px;background:var(--tint);border-radius:10px}
+.news li{display:flex;gap:20px;padding:12px 0;border-bottom:1px solid #e1e7ec;font-size:15px;line-height:1.55}
+.news li:last-child{border-bottom:0}
+.news time{flex:0 0 76px;font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--muted);padding-top:2px}
+
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px}
+.two h3{margin:0 0 8px;font-size:19px;font-weight:600}
+.two p{margin:0;font-size:16px;line-height:1.65;color:#3d4a57}
+.two .grp{margin:14px 0 4px;font-size:14px;font-weight:600;color:var(--accent)}
+.two h3+.grp{margin-top:4px}
+.bul{margin:0;padding-left:18px;font-size:16px;line-height:1.75;color:#3d4a57}
+
+.head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px;margin-bottom:24px}
+.filters{display:flex;gap:6px}
+.filters button{min-height:36px;padding:6px 14px;border-radius:6px;font:inherit;font-size:14px;cursor:pointer;border:1px solid #cfd8e0;background:#fff;color:var(--ink)}
+.filters button[aria-pressed="true"]{border-color:var(--accent);background:var(--accent);color:#fff}
+.count{margin:0 0 8px;font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--muted)}
+
+.list{list-style:none;margin:0;padding:0}
+.list li{display:flex;gap:20px;padding:16px 0;border-top:1px solid var(--line)}
+.list .yr{flex:0 0 52px;font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--muted);padding-top:2px}
+.list .body{flex:1 1 auto;min-width:0}
+.list .t{margin:0 0 4px;font-size:16px;line-height:1.5;font-weight:500}
+.list .m{margin:0;font-size:14px;line-height:1.5;color:var(--muted)}
+.tag{flex:0 0 auto;align-self:flex-start;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--accent);border:1px solid var(--accent-soft);border-radius:4px;padding:2px 6px}
+.sel li{display:block;padding:16px 0;border-top:0;border-bottom:1px solid var(--line)}
+.empty{padding:28px;border:1px dashed #cfd8e0;border-radius:10px;color:var(--muted);font-size:15px}
+
+.btn{display:inline-flex;align-items:center;min-height:44px;padding:10px 18px;border:1px solid var(--accent);border-radius:8px;background:#fff;color:var(--accent);font:inherit;font-size:15px;cursor:pointer;margin-top:20px}
+.btn:hover{background:#f0f8f7;text-decoration:none}
+
+.rows{border-bottom:1px solid var(--line)}
+.row{display:flex;flex-wrap:wrap;gap:6px 24px;padding:16px 0;border-top:1px solid var(--line)}
+.row .when{flex:0 0 196px;white-space:nowrap;font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--muted);padding-top:1px}
+.row .what{flex:1 1 360px;margin:0;font-size:16px;line-height:1.55}
+.row .what strong{font-weight:600}
+.row .what span{color:var(--muted)}
+
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.card{border:1px solid #dfe5eb;border-radius:10px;padding:24px}
+.card p{margin:0;font-size:17px;line-height:1.7}
+.card .k{margin:0 0 8px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--accent)}
+
+footer{margin-top:72px;font-size:13px;color:var(--muted)}
+
+@media (max-width:900px){
+  .layout{flex-direction:column}
+  aside{position:static;height:auto;flex:none;padding:36px 24px;gap:20px}
+  .avatar{width:104px;height:104px}
+  nav{flex-direction:row;flex-wrap:wrap}
+  nav a{padding:8px 12px;min-height:40px}
+  .chips{margin-top:0}
+  main{padding:40px 24px 72px}
+  .two,.cards{grid-template-columns:1fr}
+  .hero-photo{width:100%;max-width:280px;height:auto;aspect-ratio:3/4}
+  .row .when{flex-basis:100%}
+}
+</style>
+</head>
+<body>
+<div class="layout">
+<aside>
+  <img class="avatar" src="assets/profile.jpg" alt="Portrait of Jaeho Hwang" width="136" height="136">
+  <div>
+    <p class="name">Jaeho Hwang</p>
+    <p class="aff"><b>Postdoctoral Researcher</b><br>Human-Centered AI Research Institute</p>
+    <p class="aff"><b>Lecturer</b><br>Department of Mathematics</p>
+    <p class="aff" style="color:var(--side-text)">Ewha Womans University<br><span style="color:var(--side-muted)">Seoul, South Korea</span></p>
+  </div>
+  <nav aria-label="Sections">
+    <a href="#about" data-nav="about">About</a>
+    <a href="#publications" data-nav="publications">Publications</a>
+    <a href="#talks" data-nav="talks">Talks</a>
+    <a href="#teaching" data-nav="teaching">Teaching</a>
+    <a href="#cv" data-nav="cv">CV</a>
+    <a href="#contact" data-nav="contact">Contact</a>
+  </nav>
+  <div class="chips">
+    <a href="https://scholar.google.com/citations?user=x80e7uQAAAAJ" target="_blank" rel="noopener">Scholar</a>
+    <a href="https://github.com/ejaeho312" target="_blank" rel="noopener">GitHub</a>
+    <a href="mailto:hjaeho@ewha.ac.kr">Email</a>
+  </div>
+</aside>
+
+<main>
+<div class="wrap">
+
+<!-- ABOUT -->
+<section data-page="about" aria-labelledby="h-about">
+  <div class="hero">
+    <div class="hero-text">
+      <h1 id="h-about" style="font-size:40px;margin-bottom:12px">Jaeho Hwang</h1>
+      <p class="sub">Postdoctoral Researcher, Human-Centered AI Research Institute</p>
+      <p class="sub">Lecturer, Department of Mathematics</p>
+      <p style="margin:0 0 24px;font-size:16px;color:var(--muted)">Ewha Womans University · Ph.D. in Mathematics, Sogang University</p>
+      <p class="bio">I work at the interface of applied mathematics and machine learning. My background is in the analysis of nonlinear partial differential equations, especially blow-up and global existence for reaction–diffusion equations and systems, and for nonlinear Schrödinger equations. Today my research focuses on machine learning methods grounded in that kind of mathematical structure.</p>
+    </div>
+    <img class="hero-photo" src="assets/casual.jpg" alt="Jaeho Hwang, casual photo" width="220" height="293" loading="lazy">
+  </div>
+
+  <h2 class="label">NEWS</h2>
+  <ul class="news" id="news"></ul>
+
+  <h2 class="label" style="margin-bottom:20px">RESEARCH</h2>
+  <div class="two">
+    <div>
+      <h3>Machine Learning</h3>
+      <p class="grp">Trustworthy &amp; Reliable AI</p>
+      <ul class="bul">
+        <li>PDE-based analysis of AI phenomena</li>
+        <li>Certified decoding for error-correcting codes</li>
+        <li>Physics-derived noise robustness</li>
+      </ul>
+      <p class="grp">Generative AI</p>
+      <ul class="bul">
+        <li>Biomedical Data Science</li>
+        <li>Foundation Models</li>
+      </ul>
+      <p class="grp">Adaptive &amp; Multimodal AI</p>
+      <ul class="bul">
+        <li>Test-Time Adaptation (TTA)</li>
+        <li>Large Language Models (LLMs)</li>
+        <li>Vision-Language-Action Models (VLAs)</li>
+        <li>Multimodal Large Language Models (MLLMs)</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Partial Differential Equations</h3>
+      <ul class="bul">
+        <li>Blow-up for parabolic PDEs</li>
+        <li>Global existence for parabolic PDEs</li>
+        <li>Blow-up for Schrödinger equations</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="label" style="margin-bottom:0">SELECTED PUBLICATIONS</h2>
+  <ul class="list sel" id="selected"></ul>
+  <a class="btn" href="#publications">All publications →</a>
+</section>
+
+<!-- PUBLICATIONS -->
+<section data-page="publications" aria-labelledby="h-pubs">
+  <div class="head">
+    <h1 id="h-pubs">Publications</h1>
+    <div class="filters" role="group" aria-label="Filter publications" data-filter="pubs">
+      <button type="button" data-f="All" aria-pressed="true">All</button>
+      <button type="button" data-f="AI" aria-pressed="false">AI</button>
+      <button type="button" data-f="PDE" aria-pressed="false">PDE</button>
+    </div>
+  </div>
+  <p class="count" id="pubs-count"></p>
+  <ul class="list" id="pubs"></ul>
+</section>
+
+<!-- TALKS -->
+<section data-page="talks" aria-labelledby="h-talks">
+  <div class="head">
+    <h1 id="h-talks">Talks</h1>
+    <div class="filters" role="group" aria-label="Filter talks" data-filter="talks">
+      <button type="button" data-f="All" aria-pressed="true">All</button>
+      <button type="button" data-f="AI" aria-pressed="false">AI</button>
+      <button type="button" data-f="PDE" aria-pressed="false">PDE</button>
+    </div>
+  </div>
+  <p class="count" id="talks-count"></p>
+  <ul class="list" id="talks"></ul>
+</section>
+
+<!-- TEACHING -->
+<section data-page="teaching" aria-labelledby="h-teaching">
+  <h1 id="h-teaching" style="margin-bottom:8px">Teaching</h1>
+  <p style="margin:0 0 28px;font-size:16px;color:var(--muted)">Department of Mathematics, Ewha Womans University</p>
+  <div class="rows">
+    <div class="row"><span class="when">Fall 2026</span><p class="what"><strong>Differential Equations</strong><br><span>Instructor · Ewha Womans University</span></p></div>
+    <div class="row"><span class="when">Spring 2026</span><p class="what"><strong>Calculus</strong><br><span>Instructor · Ewha Womans University</span></p></div>
+    <div class="row"><span class="when">Fall 2025</span><p class="what"><strong>Calculus</strong><br><span>Instructor · Ewha Womans University</span></p></div>
+  </div>
+</section>
+
+<!-- CV -->
+<section data-page="cv" aria-labelledby="h-cv">
+  <h1 id="h-cv">CV</h1>
+  <!-- CV PDF: put the file at assets/cv.pdf and uncomment the line below
+  <a class="btn" href="assets/cv.pdf">Download PDF</a>
+  -->
+
+  <h2 class="label">CURRENT POSITIONS</h2>
+  <div class="rows">
+    <div class="row"><span class="when">Oct. 2025 – present</span><p class="what"><strong>Postdoctoral Researcher</strong>, Human-Centered Artificial Intelligence Research Institute, Ewha Womans University</p></div>
+    <div class="row"><span class="when">Sep. 2025 – present</span><p class="what"><strong>Lecturer</strong>, Department of Mathematics, Ewha Womans University</p></div>
+  </div>
+
+  <h2 class="label">RESEARCH EXPERIENCE</h2>
+  <div class="rows">
+    <div class="row"><span class="when">Mar. 2025 – Aug. 2025</span><p class="what"><strong>Researcher</strong>, Department of Mathematics, Kunsan National University</p></div>
+    <div class="row"><span class="when">Oct. 2024 – Feb. 2025</span><p class="what"><strong>Researcher</strong>, Institute of Mathematical Sciences, Ewha Womans University</p></div>
+    <div class="row"><span class="when">Mar. 2023 – Sep. 2024</span><p class="what"><strong>Researcher</strong>, Inter-university Semiconductor Research Center, Seoul National University</p></div>
+    <div class="row"><span class="when">Mar. 2023 – Feb. 2024</span><p class="what"><strong>Researcher</strong>, Institute of Basic Science, Sogang University</p></div>
+  </div>
+
+  <h2 class="label">EDUCATION</h2>
+  <div class="rows">
+    <div class="row"><span class="when">Feb. 2023</span><p class="what"><strong>Ph.D. in Mathematics</strong>, Sogang University<br><span>Advisor: Soon-Yeong Chung</span></p></div>
+    <div class="row"><span class="when">Aug. 2018</span><p class="what"><strong>M.S. in Mathematics</strong>, Sogang University<br><span>Advisor: Soon-Yeong Chung</span></p></div>
+    <div class="row"><span class="when">Feb. 2016</span><p class="what"><strong>B.S. in Mathematics</strong>, Sogang University</p></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section data-page="contact" aria-labelledby="h-contact">
+  <h1 id="h-contact" style="margin-bottom:28px">Contact</h1>
+  <div class="cards">
+    <div class="card">
+      <p class="k">EMAIL</p>
+      <p><a href="mailto:hjaeho@ewha.ac.kr">hjaeho@ewha.ac.kr</a><br><a href="mailto:ejaeho312@gmail.com">ejaeho312@gmail.com</a></p>
+    </div>
+    <div class="card">
+      <p class="k">OFFICE</p>
+      <p>Room 308, SK Telecom Hall<br>Ewha Womans University, Seoul</p>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Jaeho Hwang</footer>
+</div>
+</main>
+</div>
+
+<script>
+// ---------- Content (edit here) ----------
+var C = 'S.-Y. Chung, J. Hwang';
+var PUBS = [
+  // TODO add title/authors: { year: 2026, tag: 'AI', sel: true, title: '[TITLE of arXiv:2611.01307]', authors: '[AUTHORS]', venue: 'arXiv preprint arXiv:2611.01307', url: 'https://arxiv.org/abs/2611.01307' },
+  // TODO add title/authors: { year: 2026, tag: 'AI', sel: true, title: '[TITLE of arXiv:2610.36628]', authors: '[AUTHORS]', venue: 'arXiv preprint arXiv:2610.36628', url: 'https://arxiv.org/abs/2610.36628' },
+  { year: 2026, tag: 'AI', sel: true, title: 'Certified Adaptive List Decoding for Error-Correcting Codes', authors: 'J. Hwang, B.-S. Won, U. Hwang', venue: 'arXiv preprint arXiv:2610.27805', url: 'https://arxiv.org/abs/2610.27805' },
+  { year: 2026, tag: 'AI', sel: true, title: 'Quantum Tunneling-Aware Machine Learning: Physics-Derived Noise Models for Robust Deployment', authors: 'U. Hwang, J. Hwang', venue: 'arXiv preprint arXiv:2606.00741', url: 'https://arxiv.org/abs/2606.00741' },
+  { year: 2026, tag: 'PDE', sel: true, title: 'A dichotomy for the global existence of solutions to reaction-diffusion equations and systems with time-dependent sources on bounded domains', authors: C, venue: 'Journal of Mathematical Analysis and Applications', url: 'https://doi.org/10.1016/j.jmaa.2025.129905' },
+  { year: 2026, tag: 'PDE', title: 'Blow-up phenomena for solutions to reaction-diffusion systems on networks', authors: C, venue: 'Differential and Integral Equations 39 (2026), no. 5–6, 389–416' },
+  { year: 2025, tag: 'PDE', title: 'Criteria for blow-up phenomena for solutions to nonlinear reaction–diffusion equations on cones', authors: C, venue: 'Mathematical Methods in the Applied Sciences' },
+  { year: 2024, tag: 'PDE', title: 'A necessary and sufficient condition for the global existence of solutions to nonlinear reaction-diffusion equations on the half-spaces in ℝ<sup>N</sup>', authors: C, venue: 'Mathematical Methods in the Applied Sciences' },
+  { year: 2024, tag: 'PDE', title: 'A necessary and sufficient condition for the existence of global solutions to reaction-diffusion equations on bounded domains', authors: C, venue: 'Boundary Value Problems' },
+  { year: 2024, tag: 'PDE', title: 'A necessary and sufficient condition for the global existence of solutions to fractional reaction-diffusion equations on ℝ<sup>N</sup>', authors: C, venue: 'Fractional Calculus and Applied Analysis' },
+  { year: 2022, tag: 'PDE', title: 'Blow-up conditions of nonlinear parabolic equations and systems under mixed nonlinear boundary conditions', authors: C, venue: 'Boundary Value Problems' },
+  { year: 2022, tag: 'PDE', title: 'A necessary and sufficient condition for the existence of global solutions to discrete semilinear parabolic equations on networks', authors: C, venue: 'Chaos, Solitons &amp; Fractals' },
+  { year: 2021, tag: 'PDE', title: 'A complete characterization of Fujita’s blow-up solutions for discrete p-Laplacian parabolic equations under the mixed boundary conditions on networks', authors: C, venue: 'Journal of Mathematical Analysis and Applications' },
+  { year: 2021, tag: 'PDE', title: 'Blow-up solutions to nonlinear parabolic equations with non-autonomous reactions under the mixed boundary conditions', authors: C, venue: 'Mathematical Methods in the Applied Sciences' },
+  { year: 2021, tag: 'PDE', title: 'New blow-up conditions to p-Laplace type nonlinear parabolic equations under nonlinear boundary conditions', authors: C, venue: 'Mathematical Methods in the Applied Sciences' },
+  { year: 2020, tag: 'PDE', title: 'On the critical set for discrete Laplacian parabolic equations with polynomial-type reactions', authors: 'S.-Y. Chung, M.-J. Choi, J. Hwang', venue: 'Journal of Difference Equations and Applications' },
+  { year: 2019, tag: 'PDE', title: 'A condition for blow-up solutions to discrete p-Laplacian parabolic equations under the mixed boundary conditions on networks', authors: 'S.-Y. Chung, M.-J. Choi, J. Hwang', venue: 'Boundary Value Problems' },
+  { year: 2019, tag: 'PDE', title: 'The discrete p-Schrödinger equations under the mixed boundary conditions on networks', authors: C, venue: 'Physica D: Nonlinear Phenomena' },
+  { year: 2019, tag: 'PDE', title: 'A complete characterization of the discrete p-Laplacian parabolic equations with q-nonlocal reaction with respect to the blow-up property', authors: C, venue: 'Journal of Mathematical Analysis and Applications' }
+];
+
+// kind: 'International' or 'Domestic'. Add AI talks with tag: 'AI'.
+var TALKS = [
+  { year: 2023, tag: 'PDE', kind: 'International', event: '14th ISAAC Congress' },
+  { year: 2023, tag: 'PDE', kind: 'Domestic', event: 'KMS Annual Meeting' },
+  { year: 2023, tag: 'PDE', kind: 'Domestic', event: 'KMS Spring Meeting' },
+  { year: 2022, tag: 'PDE', kind: 'International', event: 'IMU Conference' },
+  { year: 2022, tag: 'PDE', kind: 'International', event: 'International Conference on Generalized Functions 2022' },
+  { year: 2022, tag: 'PDE', kind: 'Domestic', event: 'KMS Spring Meeting' },
+  { year: 2021, tag: 'PDE', kind: 'International', event: '13th ISAAC Congress', title: 'Blow-up conditions to p-Laplace equations' },
+  { year: 2021, tag: 'PDE', kind: 'Domestic', event: 'KMS Annual Meeting' },
+  { year: 2021, tag: 'PDE', kind: 'Domestic', event: 'KMS Spring Meeting' },
+  { year: 2020, tag: 'PDE', kind: 'International', event: 'International Conference on Generalized Functions 2020' },
+  { year: 2019, tag: 'PDE', kind: 'International', event: '12th ISAAC Congress' },
+  { year: 2019, tag: 'PDE', kind: 'Domestic', event: 'KMS Spring Meeting' },
+  { year: 2018, tag: 'PDE', kind: 'Domestic', event: 'KMS Spring Meeting' },
+  { year: 2017, tag: 'PDE', kind: 'Domestic', event: 'KMS Spring Meeting' }
+];
+
+var NEWS = [
+  { date: 'Oct 2026', text: 'New preprint on arXiv: <a href="https://arxiv.org/abs/2610.27805">Certified Adaptive List Decoding for Error-Correcting Codes</a>.' },
+  { date: 'Jun 2026', text: 'New preprint on arXiv: <a href="https://arxiv.org/abs/2606.00741">Quantum Tunneling-Aware Machine Learning</a>.' },
+  { date: '2026', text: 'Paper published in <em>Differential and Integral Equations</em>: Blow-up phenomena for solutions to reaction-diffusion systems on networks.' },
+  { date: 'Feb 2026', text: 'Paper published in <em>Journal of Mathematical Analysis and Applications</em>: <a href="https://doi.org/10.1016/j.jmaa.2025.129905">A dichotomy for the global existence of solutions to reaction-diffusion equations and systems with time-dependent sources</a>.' }
+];
+
+// ---------- Rendering ----------
+function pubItem(p, withYear) {
+  var t = p.url ? '<a href="' + p.url + '" target="_blank" rel="noopener">' + p.title + '</a>' : p.title;
+  return '<li>' + (withYear ? '<span class="yr">' + p.year + '</span>' : '') +
+    '<div class="body"><p class="t">' + t + '</p><p class="m">' + p.authors + ' · <em>' + p.venue + '</em>' + (withYear ? '' : ', ' + p.year) + '</p></div>' +
+    (withYear ? '<span class="tag">' + p.tag + '</span>' : '') + '</li>';
+}
+function talkItem(t) {
+  var main = t.title ? t.title : t.event;
+  var meta = (t.title ? t.event + ' · ' : '') + t.kind;
+  return '<li><span class="yr">' + t.year + '</span><div class="body"><p class="t">' + main + '</p><p class="m">' + meta + '</p></div><span class="tag">' + t.tag + '</span></li>';
+}
+var state = { pubs: 'All', talks: 'All' };
+function render() {
+  var ps = PUBS.filter(function (p) { return state.pubs === 'All' || p.tag === state.pubs; });
+  document.getElementById('pubs').innerHTML = ps.map(function (p) { return pubItem(p, true); }).join('');
+  document.getElementById('pubs-count').textContent = ps.length + (ps.length === 1 ? ' paper' : ' papers');
+  var ts = TALKS.filter(function (t) { return state.talks === 'All' || t.tag === state.talks; });
+  document.getElementById('talks').innerHTML = ts.length ? ts.map(talkItem).join('') : '<li style="border:0;padding:0"><div class="empty">Talks in this area will be listed here soon.</div></li>';
+  document.getElementById('talks-count').textContent = ts.length ? ts.length + (ts.length === 1 ? ' talk' : ' talks') : '';
+}
+document.getElementById('selected').innerHTML = PUBS.filter(function (p) { return p.sel; }).map(function (p) { return pubItem(p, false); }).join('');
+document.getElementById('news').innerHTML = NEWS.map(function (n) { return '<li><time>' + n.date + '</time><span>' + n.text + '</span></li>'; }).join('');
+document.querySelectorAll('[data-filter]').forEach(function (group) {
+  group.addEventListener('click', function (e) {
+    var b = e.target.closest('button'); if (!b) return;
+    state[group.dataset.filter] = b.dataset.f;
+    group.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+    render();
+  });
+});
+render();
+
+// ---------- Page switching (hash based, About by default) ----------
+var PAGES = ['about', 'publications', 'talks', 'teaching', 'cv', 'contact'];
+function show() {
+  var id = location.hash.replace('#', '');
+  if (PAGES.indexOf(id) < 0) id = 'about';
+  document.querySelectorAll('section[data-page]').forEach(function (s) { s.classList.toggle('active', s.dataset.page === id); });
+  document.querySelectorAll('[data-nav]').forEach(function (a) {
+    if (a.dataset.nav === id) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
+  });
+  var titles = { about: 'Jaeho Hwang', publications: 'Publications · Jaeho Hwang', talks: 'Talks · Jaeho Hwang', teaching: 'Teaching · Jaeho Hwang', cv: 'CV · Jaeho Hwang', contact: 'Contact · Jaeho Hwang' };
+  document.title = titles[id];
+  window.scrollTo(0, 0);
+}
+window.addEventListener('hashchange', show);
+show();
+</script>
+</body>
+</html>
