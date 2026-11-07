@@ -81,6 +81,8 @@ h1{margin:0;font-size:36px;font-weight:600;line-height:1.15}
 .links{margin:8px 0 0;display:flex;flex-wrap:wrap;gap:6px}
 .links a{font-family:'IBM Plex Mono',monospace;font-size:12px;padding:3px 9px;border:1px solid var(--accent-soft);border-radius:4px;color:var(--accent)}
 .links a:hover{background:#f0f8f7;text-decoration:none}
+.m strong{font-weight:600;color:var(--ink)}
+sup{font-size:.75em;line-height:0}
 .tag{flex:0 0 auto;align-self:flex-start;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--accent);border:1px solid var(--accent-soft);border-radius:4px;padding:2px 6px}
 .sel li{display:block;padding:16px 0;border-top:0;border-bottom:1px solid var(--line)}
 .empty{padding:28px;border:1px dashed #cfd8e0;border-radius:10px;color:var(--muted);font-size:15px}
@@ -196,6 +198,7 @@ footer{margin-top:72px;font-size:13px;color:var(--muted)}
 
   <h2 class="label" style="margin-bottom:0">REPRESENTATIVE WORK</h2>
   <ul class="list sel" id="selected"></ul>
+  <p class="count" style="margin-top:10px"><sup>*</sup> Corresponding author</p>
   <a class="btn" href="#publications">All publications →</a>
 </section>
 
@@ -209,7 +212,7 @@ footer{margin-top:72px;font-size:13px;color:var(--muted)}
       <button type="button" data-f="PDE" aria-pressed="false">PDE</button>
     </div>
   </div>
-  <p class="count" id="pubs-count"></p>
+  <p class="count"><span id="pubs-count"></span> · <sup>*</sup> Corresponding author</p>
   <ul class="list" id="pubs"></ul>
 </section>
 
@@ -293,24 +296,24 @@ footer{margin-top:72px;font-size:13px;color:var(--muted)}
 var C = 'S.-Y. Chung, J. Hwang';
 // Links: paper (journal/DOI or conference page), arxiv, code (GitHub). Buttons appear only for fields that exist.
 var PUBS = [
-  { year: 2026, tag: 'AI', title: 'The Batch Size Can Be One: Test-Time Adaptation from Classifier Geometry', authors: 'J. Hwang, J. Lee, Y. Oh, S. Yoon, J. Shin, U. Hwang', venue: 'arXiv preprint arXiv:2610.36628', arxiv: 'https://arxiv.org/abs/2610.36628' },
-  { year: 2026, tag: 'AI', title: 'Certified Adaptive List Decoding for Error-Correcting Codes', authors: 'J. Hwang, B.-S. Won, U. Hwang', venue: 'arXiv preprint arXiv:2610.27805', arxiv: 'https://arxiv.org/abs/2610.27805' },
-  { year: 2026, tag: 'AI', title: 'Quantum Tunneling-Aware Machine Learning: Physics-Derived Noise Models for Robust Deployment', authors: 'U. Hwang, J. Hwang', venue: 'arXiv preprint arXiv:2606.00741', arxiv: 'https://arxiv.org/abs/2606.00741' },
-  { year: 2026, tag: 'PDE', title: 'A dichotomy for the global existence of solutions to reaction-diffusion equations and systems with time-dependent sources on bounded domains', authors: C, venue: 'Journal of Mathematical Analysis and Applications', paper: 'https://doi.org/10.1016/j.jmaa.2025.129905' },
+  { year: 2026, tag: 'AI', title: 'The Batch Size Can Be One: Test-Time Adaptation from Classifier Geometry', authors: 'J. Hwang, J. Lee, Y. Oh, S. Yoon*, J. Shin, U. Hwang*', venue: 'arXiv preprint arXiv:2610.36628', arxiv: 'https://arxiv.org/abs/2610.36628' },
+  { year: 2026, tag: 'AI', title: 'Certified Adaptive List Decoding for Error-Correcting Codes', authors: 'J. Hwang, B.-S. Won*, U. Hwang*', venue: 'arXiv preprint arXiv:2610.27805', arxiv: 'https://arxiv.org/abs/2610.27805' },
+  { year: 2026, tag: 'AI', title: 'Quantum Tunneling-Aware Machine Learning: Physics-Derived Noise Models for Robust Deployment', authors: 'U. Hwang*, J. Hwang', venue: 'arXiv preprint arXiv:2606.00741', arxiv: 'https://arxiv.org/abs/2606.00741' },
+  { year: 2026, tag: 'PDE', title: 'A dichotomy for the global existence of solutions to reaction-diffusion equations and systems with time-dependent sources on bounded domains', authors: 'S.-Y. Chung*, J. Hwang', venue: 'Journal of Mathematical Analysis and Applications', paper: 'https://doi.org/10.1016/j.jmaa.2025.129905' },
   { year: 2026, tag: 'PDE', title: 'Blow-up phenomena for solutions to reaction-diffusion systems on networks', authors: C, venue: 'Differential and Integral Equations', paper: 'https://doi.org/10.57262/die039-0506-389' },
-  { year: 2025, tag: 'PDE', title: 'Criteria for blow-up phenomena for solutions to nonlinear reaction–diffusion equations on cones', authors: C, venue: 'Mathematical Methods in the Applied Sciences', paper: 'https://doi.org/10.1002/mma.70017' },
-  { year: 2024, tag: 'PDE', title: 'A necessary and sufficient condition for the global existence of solutions to nonlinear reaction-diffusion equations on the half-spaces in ℝ<sup>N</sup>', authors: C, venue: 'Mathematical Methods in the Applied Sciences', paper: 'https://doi.org/10.1002/mma.9721' },
-  { year: 2024, tag: 'PDE', title: 'A necessary and sufficient condition for the existence of global solutions to reaction-diffusion equations on bounded domains', authors: C, venue: 'Boundary Value Problems', paper: 'https://doi.org/10.1186/s13661-024-01822-w' },
-  { year: 2024, tag: 'PDE', sel: true, title: 'A necessary and sufficient condition for the global existence of solutions to fractional reaction-diffusion equations on ℝ<sup>N</sup>', authors: C, venue: 'Fractional Calculus and Applied Analysis', paper: 'https://doi.org/10.1007/s13540-024-00310-3' },
-  { year: 2022, tag: 'PDE', title: 'Blow-up conditions of nonlinear parabolic equations and systems under mixed nonlinear boundary conditions', authors: C, venue: 'Boundary Value Problems', paper: 'https://doi.org/10.1186/s13661-022-01627-9' },
-  { year: 2022, tag: 'PDE', title: 'A necessary and sufficient condition for the existence of global solutions to discrete semilinear parabolic equations on networks', authors: C, venue: 'Chaos, Solitons &amp; Fractals', paper: 'https://doi.org/10.1016/j.chaos.2022.112055' },
-  { year: 2021, tag: 'PDE', title: 'A complete characterization of Fujita’s blow-up solutions for discrete p-Laplacian parabolic equations under the mixed boundary conditions on networks', authors: C, venue: 'Journal of Mathematical Analysis and Applications', paper: 'https://doi.org/10.1016/j.jmaa.2020.124859' },
-  { year: 2021, tag: 'PDE', title: 'Blow-up solutions to nonlinear parabolic equations with non-autonomous reactions under the mixed boundary conditions', authors: C, venue: 'Mathematical Methods in the Applied Sciences', paper: 'https://doi.org/10.1002/mma.7131' },
-  { year: 2021, tag: 'PDE', title: 'New blow-up conditions to p-Laplace type nonlinear parabolic equations under nonlinear boundary conditions', authors: C, venue: 'Mathematical Methods in the Applied Sciences', paper: 'https://doi.org/10.1002/mma.7172' },
-  { year: 2020, tag: 'PDE', title: 'On the critical set for discrete Laplacian parabolic equations with polynomial-type reactions', authors: 'S.-Y. Chung, M.-J. Choi, J. Hwang', venue: 'Journal of Difference Equations and Applications', paper: 'https://doi.org/10.1080/10236198.2020.1790538' },
-  { year: 2019, tag: 'PDE', title: 'A condition for blow-up solutions to discrete p-Laplacian parabolic equations under the mixed boundary conditions on networks', authors: 'S.-Y. Chung, M.-J. Choi, J. Hwang', venue: 'Boundary Value Problems', paper: 'https://doi.org/10.1186/s13661-019-01294-3' },
-  { year: 2019, tag: 'PDE', title: 'The discrete p-Schrödinger equations under the mixed boundary conditions on networks', authors: C, venue: 'Physica D: Nonlinear Phenomena', paper: 'https://doi.org/10.1016/j.physd.2019.02.009' },
-  { year: 2019, tag: 'PDE', title: 'A complete characterization of the discrete p-Laplacian parabolic equations with q-nonlocal reaction with respect to the blow-up property', authors: C, venue: 'Journal of Mathematical Analysis and Applications', paper: 'https://doi.org/10.1016/j.jmaa.2019.01.031' }
+  { year: 2025, tag: 'PDE', title: 'Criteria for blow-up phenomena for solutions to nonlinear reaction–diffusion equations on cones', authors: 'S.-Y. Chung*, J. Hwang', venue: 'Mathematical Methods in the Applied Sciences', paper: 'https://doi.org/10.1002/mma.70017' },
+  { year: 2024, tag: 'PDE', title: 'A necessary and sufficient condition for the global existence of solutions to nonlinear reaction-diffusion equations on the half-spaces in ℝ<sup>N</sup>', authors: 'S.-Y. Chung, J. Hwang*', venue: 'Mathematical Methods in the Applied Sciences', paper: 'https://doi.org/10.1002/mma.9721' },
+  { year: 2024, tag: 'PDE', title: 'A necessary and sufficient condition for the existence of global solutions to reaction-diffusion equations on bounded domains', authors: 'S.-Y. Chung*, J. Hwang', venue: 'Boundary Value Problems', paper: 'https://doi.org/10.1186/s13661-024-01822-w' },
+  { year: 2024, tag: 'PDE', sel: true, title: 'A necessary and sufficient condition for the global existence of solutions to fractional reaction-diffusion equations on ℝ<sup>N</sup>', authors: 'S.-Y. Chung*, J. Hwang', venue: 'Fractional Calculus and Applied Analysis', paper: 'https://doi.org/10.1007/s13540-024-00310-3' },
+  { year: 2022, tag: 'PDE', title: 'Blow-up conditions of nonlinear parabolic equations and systems under mixed nonlinear boundary conditions', authors: 'S.-Y. Chung, J. Hwang*', venue: 'Boundary Value Problems', paper: 'https://doi.org/10.1186/s13661-022-01627-9' },
+  { year: 2022, tag: 'PDE', title: 'A necessary and sufficient condition for the existence of global solutions to discrete semilinear parabolic equations on networks', authors: 'S.-Y. Chung*, J. Hwang', venue: 'Chaos, Solitons &amp; Fractals', paper: 'https://doi.org/10.1016/j.chaos.2022.112055' },
+  { year: 2021, tag: 'PDE', title: 'A complete characterization of Fujita’s blow-up solutions for discrete p-Laplacian parabolic equations under the mixed boundary conditions on networks', authors: 'S.-Y. Chung, J. Hwang*', venue: 'Journal of Mathematical Analysis and Applications', paper: 'https://doi.org/10.1016/j.jmaa.2020.124859' },
+  { year: 2021, tag: 'PDE', title: 'Blow-up solutions to nonlinear parabolic equations with non-autonomous reactions under the mixed boundary conditions', authors: 'S.-Y. Chung*, J. Hwang', venue: 'Mathematical Methods in the Applied Sciences', paper: 'https://doi.org/10.1002/mma.7131' },
+  { year: 2021, tag: 'PDE', title: 'New blow-up conditions to p-Laplace type nonlinear parabolic equations under nonlinear boundary conditions', authors: 'S.-Y. Chung, J. Hwang*', venue: 'Mathematical Methods in the Applied Sciences', paper: 'https://doi.org/10.1002/mma.7172' },
+  { year: 2020, tag: 'PDE', title: 'On the critical set for discrete Laplacian parabolic equations with polynomial-type reactions', authors: 'S.-Y. Chung, M.-J. Choi, J. Hwang*', venue: 'Journal of Difference Equations and Applications', paper: 'https://doi.org/10.1080/10236198.2020.1790538' },
+  { year: 2019, tag: 'PDE', title: 'A condition for blow-up solutions to discrete p-Laplacian parabolic equations under the mixed boundary conditions on networks', authors: 'S.-Y. Chung*, M.-J. Choi, J. Hwang', venue: 'Boundary Value Problems', paper: 'https://doi.org/10.1186/s13661-019-01294-3' },
+  { year: 2019, tag: 'PDE', title: 'The discrete p-Schrödinger equations under the mixed boundary conditions on networks', authors: 'S.-Y. Chung, J. Hwang*', venue: 'Physica D: Nonlinear Phenomena', paper: 'https://doi.org/10.1016/j.physd.2019.02.009' },
+  { year: 2019, tag: 'PDE', title: 'A complete characterization of the discrete p-Laplacian parabolic equations with q-nonlocal reaction with respect to the blow-up property', authors: 'S.-Y. Chung, J. Hwang*', venue: 'Journal of Mathematical Analysis and Applications', paper: 'https://doi.org/10.1016/j.jmaa.2019.01.031' }
 ];
 
 // kind: 'International' or 'Domestic'. Add AI talks with tag: 'AI'.
@@ -344,9 +347,12 @@ function pubLinks(p) {
   if (p.code) L.push('<a href="' + p.code + '" target="_blank" rel="noopener">Code</a>');
   return L.length ? '<p class="links">' + L.join('') + '</p>' : '';
 }
+function fmtAuthors(a) {
+  return a.replace(/J\. Hwang/g, '<strong>J. Hwang</strong>').replace(/\*/g, '<sup>*</sup>');
+}
 function pubItem(p, withYear) {
   return '<li>' + (withYear ? '<span class="yr">' + p.year + '</span>' : '') +
-    '<div class="body"><p class="t">' + p.title + '</p><p class="m">' + p.authors + ' · <em>' + p.venue + '</em>' + (withYear ? '' : ', ' + p.year) + '</p>' + pubLinks(p) + '</div>' +
+    '<div class="body"><p class="t">' + p.title + '</p><p class="m">' + fmtAuthors(p.authors) + ' · <em>' + p.venue + '</em>' + (withYear ? '' : ', ' + p.year) + '</p>' + pubLinks(p) + '</div>' +
     (withYear ? '<span class="tag">' + p.tag + '</span>' : '') + '</li>';
 }
 function talkItem(t) {
